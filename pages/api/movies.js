@@ -33,3 +33,10 @@ export const getMovieData = () => {
     resolve(movie_data)
   })
 }
+
+export const getMovieDetail = movieId => {
+  return new Promise((resolve, reject) => {
+    const movieIndex = movie_data.findIndex(movie => movie.id === movieId)
+    resolve(movie_data[movieIndex])
+  })
+}
