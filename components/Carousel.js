@@ -1,31 +1,28 @@
-const Carousel = () => {
+const Carousel = ({images}) => {
+
   return (
-    <div id="carouselExampleIndicators" className="carousel slide my-4" data-ride="carousel">
-      <ol className="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div className="carousel-inner" role="listbox">
-        <div className="carousel-item active">
-          <img className="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide" />
+  <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel" style={{paddingBottom: '48px' }}>
+    <ol className="carousel-indicators">
+      {images.map((_, i) => (
+        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to={i} className={i === 0 ? 'active' : ''}></li>
+      ))}
+    </ol>
+    <div className="carousel-inner">
+      {images.map((image, i) => (
+        <div className={`carousel-item ${i === 0 ? 'active' : ''}`}>
+          <img src={image.url} className="d-block w-100" alt={image.name} style={{maxHeight: '348px' }}/>
         </div>
-        <div className="carousel-item">
-          <img className="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide" />
-        </div>
-        <div className="carousel-item">
-          <img className="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide" />
-        </div>
-        </div>
-          <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="sr-only">Previous</span>
-          </a>
-          <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="sr-only">Next</span>
-          </a>
+      ))}
     </div>
+    <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+      <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span className="visually-hidden">Previous</span>
+    </a>
+    <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+      <span className="carousel-control-next-icon" aria-hidden="true"></span>
+      <span className="visually-hidden">Next</span>
+    </a>
+  </div>
   )
 }
 

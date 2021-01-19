@@ -28,6 +28,13 @@ const movie_data = [
   }
 ]
 
+const category_data = [
+  {id: 'c-1', name: 'drama'},
+  {id: 'c-2', name: 'action'},
+  {id: 'c-3', name: 'adventeru'},
+  {id: 'c-4', name: 'historical'},
+]
+
 export const getMovieData = () => {
   return new Promise((resolve, reject) => {
     resolve(movie_data)
@@ -38,5 +45,11 @@ export const getMovieDetail = movieId => {
   return new Promise((resolve, reject) => {
     const movieIndex = movie_data.findIndex(movie => movie.id === movieId)
     resolve(movie_data[movieIndex])
+  })
+}
+
+export const getCategories = () => {
+  return new Promise((resolve, reject) => {
+    resolve(category_data)
   })
 }
