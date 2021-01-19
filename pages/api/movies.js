@@ -29,10 +29,11 @@ const movie_data = [
 ]
 
 const category_data = [
-  {id: 'c-1', name: 'drama'},
-  {id: 'c-2', name: 'action'},
-  {id: 'c-3', name: 'adventeru'},
-  {id: 'c-4', name: 'historical'},
+  {id: 'c-1', name: 'Drama'},
+  {id: 'c-2', name: 'Action'},
+  {id: 'c-3', name: 'Adventure'},
+  {id: 'c-4', name: 'Historical'},
+  {id: 'c-5', name: "Music"}
 ]
 
 export const getMovieData = () => {

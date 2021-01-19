@@ -1,9 +1,9 @@
 import SideMenu from '../components/SideMenu';
 import Carousel from '../components/Carousel';
 import Cards from '../components/Cards';
-import { getMovieData } from './api/movies'
+import { getMovieData, getCategories } from './api/movies'
 
-export default function Home({movies, images}) {
+export default function Home({movies, images, categories}) {
 
   // Ther's different ways to get the info from the API:  // 
   // 1. Usign useState and useEffect
@@ -24,7 +24,7 @@ export default function Home({movies, images}) {
       <div className="container">
         <div className="row">
           <div className="col-lg-3">
-            <SideMenu/>
+            <SideMenu categories={categories}/>
           </div>
           <div className="col-lg-9">
             <Carousel images={images}/>
@@ -45,8 +45,10 @@ export async function getStaticProps(context) {
     url: movie.image,
     name: movie.name
   }))
+  const categoriesData = await getCategories()
   return {
     props: {movies: data,
-            images: movieImages},
+            images: movieImages,
+            categories: categoriesData},
   }
 }

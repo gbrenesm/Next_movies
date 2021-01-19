@@ -4,12 +4,12 @@ const Carousel = ({images}) => {
   <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel" style={{paddingBottom: '48px' }}>
     <ol className="carousel-indicators">
       {images.map((_, i) => (
-        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to={i} className={i === 0 ? 'active' : ''}></li>
+        <li key={i} data-bs-target="#carouselExampleIndicators" data-bs-slide-to={i} className={i === 0 ? 'active' : ''}></li>
       ))}
     </ol>
     <div className="carousel-inner">
       {images.map((image, i) => (
-        <div className={`carousel-item ${i === 0 ? 'active' : ''}`}>
+        <div key={image.id} className={`carousel-item ${i === 0 ? 'active' : ''}`}>
           <img src={image.url} className="d-block w-100" alt={image.name} style={{maxHeight: '348px' }}/>
         </div>
       ))}
