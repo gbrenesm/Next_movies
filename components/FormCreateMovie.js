@@ -1,16 +1,27 @@
 import { useState } from 'react';
 
-const MovieCreateForm = ({categories}) => {
-  const [form, setForm] = useState({})
+const MovieCreateForm = ({categories, createMovieSumbit}) => {
+  const [form, setForm] = useState({
+    name: '',
+    description: '',
+    rating: '',
+    image: '',
+
+  })
 
   const handleChange = e => {
     setForm({...form, 
       [e.target.name]: e.target.value})
   }
 
+  const handelSubmit = e => {
+    e.preventDefault(e)
+    createMovieSumbit({...form})
+  }
+
 
   return (
-    <form>
+    <form onSubmit={handelSubmit}>
       <div className="input-group mb-3">
         <span className="input-group-text" id="inputGroup-sizing-sm" htmlFor="name">Name</span>
         <input  name="name"
@@ -51,7 +62,7 @@ const MovieCreateForm = ({categories}) => {
           ))}
         </select>
       </div>
-      <button type="button" className="btn btn-primary">Save changes</button>
+      <button type="submit" className="btn btn-primary"  data-bs-dismiss="modal">Save changes</button>
     </form>
   )
 }

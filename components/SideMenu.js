@@ -1,11 +1,17 @@
 import Modal from './Modal'
 import FromCreateMovie from './FormCreateMovie'
+import { createMovie } from '../pages/api/movies' 
 
 const SideMenu = ({categories}) => {
+
+  const  createMovieSumbit = movie => {
+    createMovie(movie).then(movies => console.log(movies))
+  }
+
   return (
     <div>
       <Modal>
-        <FromCreateMovie categories={categories}/>
+        <FromCreateMovie categories={categories} createMovieSumbit={createMovieSumbit}/>
       </Modal>
       <h1 className="my-4">Shop Name</h1>
       <div className="list-group">

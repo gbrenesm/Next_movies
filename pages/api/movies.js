@@ -49,6 +49,14 @@ export const getMovieDetail = movieId => {
   })
 }
 
+export const createMovie = movie => {
+  return new Promise((resolve, reject) => {
+    movie.id = Math.random().toString(36).substr(2, 7)
+    movie_data.push(movie)
+    resolve(movie_data)
+  })
+}
+
 export const getCategories = () => {
   return new Promise((resolve, reject) => {
     resolve(category_data)
