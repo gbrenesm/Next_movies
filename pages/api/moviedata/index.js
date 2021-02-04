@@ -1,4 +1,4 @@
-import { movies }from '../../../movies'
+import { movies } from '../../../data/movies'
 
 // export default async (req, res) => {
 //   res.status(200).json(movies)
@@ -13,7 +13,7 @@ export default async (req, res) => {
       res.status(200).json(movies)
       break;
     case 'POST':
-      res.status(200).json( {id, name, releaseYear, description, rating, genre, cover, image})
+      res.status(201).json( {id, name, releaseYear, description, rating, genre, cover, image})
       break;
     default:
       res.setHeader('Allow', ['GET', 'POST'])

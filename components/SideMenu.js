@@ -1,11 +1,15 @@
 import Modal from './Modal'
 import FromCreateMovie from './FormCreateMovie'
-import { createMovie } from '../pages/api/movies' 
+
+// Import services
+import { createMovie } from '../services/index'
+// import { createMovie } from '../pages/api/movies' 
 
 const SideMenu = ({categories}) => {
 
   const  createMovieSumbit = movie => {
     createMovie(movie).then(movies => console.log(movies))
+    // createMovie(movie).then(movies => console.log(movies))
   }
 
   return (

@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
-import { getMovieDetail } from '../api/movies'
+// import { useRouter } from 'next/router';
+// import { useState, useEffect } from 'react';
+import { getMovieDetail } from '../../services/index'
 
 const Movie = ({movie}) => {
  
@@ -41,8 +41,9 @@ export default Movie
 
 // Fetching the data with getServerSideProps
 export async function getServerSideProps(context){
-  const data = await getMovieDetail(context.query.id)
+  const movie = await getMovieDetail(context.query.id)
+  
   return {
-    props: {movie: data},
+    props: {movie: movie.data[0]},
   }
 }

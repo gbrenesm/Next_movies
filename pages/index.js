@@ -1,8 +1,9 @@
 import SideMenu from '../components/SideMenu';
 import Carousel from '../components/Carousel';
 import Cards from '../components/Cards';
-import { getMovieData} from '../services/index'
-// import { getMovieData, getCategories } from './api/movies'
+
+// Import services
+import { getMovieData, getCategories } from '../services/index'
 
 export default function Home({movies, images, categories}) {
 
@@ -24,11 +25,11 @@ export default function Home({movies, images, categories}) {
     <div>
       <div className="container">
         <div className="row">
-          {/* <div className="col-lg-3">
+          <div className="col-lg-3">
             <SideMenu categories={categories}/>
-          </div> */}
+          </div>
           <div className="col-lg-9">
-            {/* <Carousel images={images}/> */}
+            <Carousel images={images}/>
             <div className="row">
               <Cards movies={movies}/>
             </div>
@@ -41,16 +42,17 @@ export default function Home({movies, images, categories}) {
 
 export async function getStaticProps(context) {
   const movies = await getMovieData()
+  const movieImages = movies.data?.map(movie => ({
+    id: `image${movie.id}`,
+    url: movie.cover,
+    name: movie.name
+  }))
+  
+  const categoriesData = await getCategories()
 
-  // const movieImages = data?.map(movie => ({
-  //   id: `image${movie.id}`,
-  //   url: movie.image,
-  //   name: movie.name
-  // }))
-  // const categoriesData = await getCategories()
   return {
-    props: {movies: movies.data}
-            // images: movieImages,
-            // categories: categoriesData},
+    props: {movies: movies.data,
+            images: movieImages,
+            categories: categoriesData.data},
   }
 }

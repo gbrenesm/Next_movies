@@ -1,4 +1,4 @@
-import { movies }from '../../../movies'
+import { movies } from '../../../data/movies'
 
 export default async (req, res) => {
   const httpMethod = req.method
