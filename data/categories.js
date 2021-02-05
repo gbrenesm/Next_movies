@@ -1,4 +1,4 @@
-export const categoires = [
+export const categories = [
   {"id": "c-1", "name": "Drama"},
   {"id": "c-2", "name": "Action"},
   {"id": "c-3", "name": "Adventure"},
